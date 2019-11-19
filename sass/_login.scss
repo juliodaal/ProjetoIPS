@@ -1,0 +1,76 @@
+.body-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.form-signin{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50vw;
+    height: 65vh;
+    border-radius: 20px;
+    background: $color-white;
+    color: $color-black;
+    box-shadow: 0px 0px 10px rgba($color: $color-black, $alpha: 0.16);
+}
+.form-signin .container-logotype-h1-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-logotype-h1-form img{
+    width: 120px;
+    height: 120px;
+}
+.container-inputs-labels-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-inputs-labels-form h2{
+    color: $color-black;
+    font-weight: bold;
+}
+.container-inputs-labels-form input{
+    margin: 5px 0px;
+    color: $color-black;
+    padding: 10px 10px 10px 50px;
+    width: 250px;
+    background: $color-gray;
+    border: none;
+    font-weight: bold;
+    border-radius: 20px;
+}
+.container-inputs-labels-form input:focus{
+    outline: 0;
+}
+.container-inputs-labels-form div{
+    position: relative;
+}
+.container-inputs-labels-form div:nth-of-type(2){
+    margin-bottom: 30px;
+}
+.container-inputs-labels-form div i{
+    position: absolute;
+    top: 0;
+    left: 15px;
+    line-height: 46px;
+}
+.container-inputs-labels-form button{
+    color: $color-white;
+    background: $color-green;
+    border: none;
+    width: 310px;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: .3s;
+    cursor: pointer;
+}
+.container-inputs-labels-form button:hover{
+    transform: scale(1.05);
+}

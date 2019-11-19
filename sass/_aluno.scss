@@ -1,0 +1,17 @@
+.container-aluno{
+    width: 100%;
+}
+.aluno{
+    background: rgba($color: $color-dark-gray, $alpha: .3);
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    color: $color-white;
+    border-radius: 5px;
+    transition: .2s;
+}
+.aluno h3{
+    margin: 0px 10px;
+    padding: 5px 15px;
+}

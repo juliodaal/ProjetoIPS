@@ -1,0 +1,92 @@
+header{
+    width: 100vw;
+    height: 72.63px;
+    box-sizing: border-box;
+    background: $color-white;
+}
+header nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 3px 6px rgba($color: $color-black, $alpha: 0.16);
+}
+//logotype
+//select
+header nav div select{
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+}
+header nav .container-logotype-and-select{
+    display: flex;
+    justify-content: center;
+    
+}
+select{
+    height: 98%;
+    background: $color-white;
+    color: $color-black;
+}
+.container-logotype-and-select .container-logotype{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 30px;
+}
+.container-logotype-and-select .container-logotype h2{
+    color: $color-black;
+    margin-left: 40px;
+    text-transform: uppercase;
+}
+.logotype{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    z-index: 2;
+}
+.logotype img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+//user-style
+.user-style{
+    display: flex;
+    align-items: center;
+    color: $color-blue;
+    margin-right: 30px;
+}
+.user-style p{
+    margin: 0;
+    margin-right: 15px;
+}
+.container-circle{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border: 1px solid $color-blue;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+.container-circle img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.edit-profile{
+    cursor: pointer;
+}
+.edit-profile svg{
+    // position: absolute;
+    width: 15px;
+    height: 15px;
+    color: $color-blue;
+}

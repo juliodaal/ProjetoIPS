@@ -1,0 +1,39 @@
+.container-principal{
+    margin: 0px 40px 0px 140px;
+}
+.container-content-principal h1{
+    color: $color-dark-gray;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.section-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+}
+.section-container a{
+    text-decoration: none;
+}
+.number-section{
+    width: 250px;
+    height: 150px;
+    background: rgba($color: $color-dark-gray, $alpha: .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+    font-size: 2rem;
+    border-radius: 8px;
+    margin: 15px;
+    transition: .2s;
+}
+.number-section:hover{
+    background: $color-dark-green;
+    transform: scale(1.05);
+}
+.number-section:active{
+    background: $color-green;
+}

@@ -1,0 +1,50 @@
+.container-average{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 20px;
+}
+.container-average h1{
+    color: $color-dark-gray;
+    font-size: 2rem;
+    width: 100%;
+}
+.average{
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    margin: 10px;
+    transition: .2s;
+}
+.average h3{
+    margin: 0;
+}
+.average span{
+    text-transform: uppercase;
+    opacity: .5;
+}
+.average:nth-of-type(1){
+  background: $color-blue;
+}
+.average:nth-of-type(2){
+  background: $color-dark-gray;
+}
+.average:nth-of-type(3){
+  background: $color-dark-green;
+}
+.average:nth-of-type(4){
+  background: $color-red;
+}
+.average:nth-of-type(5){
+  background: $color-blue;
+}
+.average:nth-of-type(6){
+  background: $color-dark-gray;
+}
