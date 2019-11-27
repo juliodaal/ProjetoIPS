@@ -29,7 +29,7 @@ $professor =
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <title>Turma | SGA</title>
 </head>
 <body>
@@ -37,7 +37,7 @@ $professor =
         <nav>
             <div class="container-logotype-and-select">
                 <div class="container-logotype">
-                    <div class="logotype"><img src="../image/Logótipo_do_Instituto_Politécnico_de_Setúbal.png" alt="logotype IPS"></div>
+                    <div class="logotype"><img src="../assets/image/Logótipo_do_Instituto_Politécnico_de_Setúbal.png" alt="logotype IPS"></div>
                     <h2>sga</h2>
                 </div>
                 <select name="language">
@@ -47,7 +47,7 @@ $professor =
             </div>
             <div class="user-style">
                 <p><?php echo $professor[0][0];?></p>
-                <div class="container-circle"><img src="../image/default-user-icon-4.jpg" alt="User"></div>
+                <div class="container-circle"><img src="../assets/image/default-user-icon-4.jpg" alt="User"></div>
                 <div class="edit-profile"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" class="svg-inline--fa fa-sort-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path></svg></div>
             </div>
         </nav>
@@ -55,7 +55,7 @@ $professor =
     <section class="container-menu">
         <ul>
             <li><a href="cursos.php">c</a></li>
-            <li><a href="turma.html">t</a></li>
+            <li><a href="turma.php">t</a></li>
             <!-- <li><a href="#">a</a></li> -->
             <li class="logout"><a href="login.php"><i class="fa">&#xf00d;</i></a></li>
         </ul>
@@ -74,7 +74,7 @@ $professor =
                     for ($i=1; $i < count($turma) ; $i++) { 
                         echo "<div class='container-estudantes'>";
                             for ($j=0; $j < 1; $j++) { 
-                                echo "<a href='aluno.php'><div class='estudantes'><h3>" . $turma[$i][0] . "</h3><h3>Entrada:" . $turma[$i][1] . "</h3><h3>Saída:" . $turma[$i][2] . "</h3></div></a>";
+                                echo "<a href='aluno.php'><div class='estudantes'><h3>" . $turma[$i][0] . "</h3><h3>Entrada: " . $turma[$i][1] . "</h3><h3>Saída: " . $turma[$i][2] . "</h3></div></a>";
                             }
                         // echo "<a href='aluno.html'><div class='estudantes'><h3>João Cristão</h3><h3>Entrada: 08:30</h3><h3>Saída: 12:30</h3></div></a>";
                         echo "<label class='container-checkbox-estudantes'>";

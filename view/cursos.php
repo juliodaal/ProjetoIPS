@@ -1,16 +1,13 @@
 <?php
 
-$disciplinas = 
-[
-    ['Matemática','Turma 1 M','Turma 2 M','Turma 3 M','Turma 4 M'],
-    ['Logica','Turma 1 L','Turma 2 L','Turma 3 L','Turma 4 L'],
-    ['Base de dados','Turma 1 B','Turma 2 B','Turma 3 B','Turma 4 B'],
-    ['Progrmação para Internet','Turma 1 P','Turma 2 P','Turma 3 P','Turma 4 P']
-];
-$professor = 
-[
-    ['Júlia Justino','juliajustino@gmail.com']
-];
+require_once '../App/Models/Cursos.php';
+require_once '../App/Models/Professor.php';
+require_once '../App/Models/Average.php';
+use App\Models\{Cursos, Professor, Average};
+
+
+$disciplinas = new Cursos;
+$professor = new Professor;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +16,7 @@ $professor =
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <title>Curso | SGA</title>
 </head>
 <body>
@@ -27,7 +24,7 @@ $professor =
         <nav>
             <div class="container-logotype-and-select">
                 <div class="container-logotype">
-                    <div class="logotype"><img src="../image/Logótipo_do_Instituto_Politécnico_de_Setúbal.png" alt="logotype IPS"></div>
+                    <div class="logotype"><img src="../assets/image/Logótipo_do_Instituto_Politécnico_de_Setúbal.png" alt="logotype IPS"></div>
                     <h2>sga</h2>
                 </div>
                 <select name="language" id="select-language" onchange="changeLanguage()">
@@ -36,8 +33,8 @@ $professor =
                 </select>
             </div>
             <div class="user-style">
-                <p><?php echo $professor[0][0];?></p>
-                <div class="container-circle"><img src="../image/default-user-icon-4.jpg" alt="User"></div>
+                <p><?php echo $professor->setNameProfessor();?></p>
+                <div class="container-circle"><img src="../assets/image/default-user-icon-4.jpg" alt="User"></div>
                 <div class="edit-profile"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" class="svg-inline--fa fa-sort-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path></svg></div>
             </div>
         </nav>
@@ -51,20 +48,7 @@ $professor =
         </ul>
     </section>
     <section class="container-principal">
-        <?php
-        // var_dump(count($disciplinas)); 
-        // count($disciplinas)
-        for ($i=0; $i < count($disciplinas); $i++) { 
-            echo "<div class='container-content-principal'>";
-            echo "<h1 id='title'>" . $disciplinas[$i][0] . ":</h1>";
-            echo "<div class='section-container'>";
-            for ($j=0; $j < count($disciplinas[$i]) - 1; $j++) { 
-                echo "<a href='turma.php'><div class='number-section'><h3>" . $disciplinas[$i][$j + 1] . "</h3></div></a>";
-            }
-            echo "</div>";
-            echo "</div>";
-        }
-        ?>
+        <?php $disciplinas->printDisciplinaTurmas();?>
     </section>
     <script>
     // Select
