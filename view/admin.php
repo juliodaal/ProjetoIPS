@@ -1,3 +1,12 @@
+<?php
+session_start();
+$sessionUserId = $_SESSION['email'] ?? null;
+$tipoUser = $_SESSION['tipo'];
+if (!$sessionUserId  || $tipoUser != 3) {
+    echo 'No puedes entrar';
+    die;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <title>Curso | SGA</title>
+    <title>Admin | SGA</title>
 </head>
 <body>
     <header>
@@ -33,7 +42,7 @@
             <!-- <li><a href="cursos.php">c</a></li> -->
             <!-- <li><a href="#">t</a></li> -->
             <!-- <li><a href="#">a</a></li> -->
-            <li class="logout"><a href="login.php"><i class="fa">&#xf00d;</i></a></li>
+            <li class="logout"><a href="../App/Controllers/logOut.php"><i class="fa">&#xf00d;</i></a></li>
         </ul>
     </section>
     <section class="container-principal">
@@ -80,6 +89,21 @@
                             <h1>Inserir dados Professor</h1>
                             <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
                             <input type="submit" value="Sumeter dados Professor">
+                        </form>
+                        <form action="../App/Controllers/addHorarios.php" method="post">
+                            <h1>Inserir dados Horarios</h1>
+                            <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
+                            <input type="submit" value="Sumeter dados Professor">
+                        </form>
+                        <form action="../App/Controllers/addTurmaAlunos.php" method="post">
+                            <h1>Inserir dados TurmasAlunos</h1>
+                            <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
+                            <input type="submit" value="Sumeter dados Professor">
+                        </form>
+                        <form action="../App/Controllers/addAdmin.php" method="post">
+                            <h1>Inserir dados Admin</h1>
+                            <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
+                            <input type="submit" value="Sumeter dados admin">
                         </form>
                     <!-- </div> -->
                 <!-- <div class="formAdmin" id="inserirNumeroDisTurma">

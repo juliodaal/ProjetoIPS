@@ -8,6 +8,13 @@ use App\Models\{Cursos, Professor, Average};
 
 $disciplinas = new Cursos;
 $professor = new Professor;
+session_start();
+$sessionUserId = $_SESSION['email'] ?? null;
+$tipoUser = $_SESSION['tipo'];
+if (!$sessionUserId  || $tipoUser == 3) {
+    echo 'No puedes entrar';
+    die;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +51,7 @@ $professor = new Professor;
             <li><a href="cursos.php">c</a></li>
             <!-- <li><a href="#">t</a></li> -->
             <!-- <li><a href="#">a</a></li> -->
-            <li class="logout"><a href="login.php"><i class="fa">&#xf00d;</i></a></li>
+            <li class="logout"><a href="../App/Controllers/logOut.php"><i class="fa">&#xf00d;</i></a></li>
         </ul>
     </section>
     <section class="container-principal">

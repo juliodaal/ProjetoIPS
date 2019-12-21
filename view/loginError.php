@@ -27,7 +27,7 @@
             </div>
             <button type="submit" id="button">Sign in</button>
             <!-- <a href="cursos.php">Exemplo</a> -->
-            <!-- <p style="color: red;">Error: volte a intentar.</p> -->
+            <p style="color: red;">Error: volte a intentar.</p>
         </div>
     </form>
 </body>

@@ -19,8 +19,9 @@
         $email_aluno = $objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();
         $pwd_utilizador = $objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
         $cod_aluno = $objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue();
+        $pwd_encrip = password_hash($pwd_utilizador, PASSWORD_DEFAULT);
         $sql = "insert into aluno (nome_aluno, cod_aluno, email_aluno, numero_aluno, tipo_utilizador) values ('$nome_aluno','$cod_aluno','$email_aluno',$numero_aluno ,1);";
-        $sqlTwo = "insert into utilizador (email_utilizador, pwd_utilizador, tipo_utilizador) values ('$email_aluno','$pwd_utilizador',1);";
+        $sqlTwo = "insert into utilizador (nome ,email_utilizador, pwd_utilizador, tipo_utilizador) values ('$nome_aluno','$email_aluno','$pwd_encrip',1);";
         if (mysqli_query($mysqli, $sql)) {
             $mysqli->query($sql);
             $mysqli->query($sqlTwo);

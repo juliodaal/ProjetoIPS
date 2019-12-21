@@ -21,6 +21,13 @@ $professor =
 [
     ['Júlia Justino','juliajustino@gmail.com']
 ];
+session_start();
+$sessionUserId = $_SESSION['email'] ?? null;
+$tipoUser = $_SESSION['tipo'];
+if (!$sessionUserId  || $tipoUser == 3) {
+    echo 'No puedes entrar';
+    die;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +64,7 @@ $professor =
             <li><a href="cursos.php">c</a></li>
             <li><a href="turma.php">t</a></li>
             <!-- <li><a href="#">a</a></li> -->
-            <li class="logout"><a href="login.php"><i class="fa">&#xf00d;</i></a></li>
+            <li class="logout"><a href="../App/Controllers/logOut.php"><i class="fa">&#xf00d;</i></a></li>
         </ul>
     </section>
     <section class="container-principal">
