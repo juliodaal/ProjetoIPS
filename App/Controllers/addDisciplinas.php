@@ -1,6 +1,6 @@
 <?php
 
-    require'../Classes/PHPExcel/IOFactory.php';
+    require_once'../Classes/PHPExcel/IOFactory.php';
     require_once'connection.php';
 
     // $nameFile = $_POST['disciplinaFile'];

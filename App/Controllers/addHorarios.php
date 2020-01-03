@@ -1,6 +1,6 @@
 <?php
 
-    require'../Classes/PHPExcel/IOFactory.php';
+    require_once'../Classes/PHPExcel/IOFactory.php';
     require_once'connection.php';
 
     // $nameFile = $_POST['disciplinaFile'];
@@ -23,10 +23,10 @@
         $sala = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
         $ano = $objPHPExcel->getActiveSheet()->getCell('H'.$i)->getCalculatedValue();
         $sql = "insert into turmaDisciplina (cod_turma, cod_disciplina_turmaDisciplina, cod_professor_turmaDisciplina, ano) values ('$cod_turma','$cod_disciplina_turmaDisciplina',$cod_professor_turmaDisciplina,$ano);";
-        $sqlTwo = "insert into aula (data_aula, comenco_aula, fim_aula, sala, cod_turma_aula) values ('$data_aula','$comenco_aula','$fim_aula','$sala','$cod_turma');";
+        $sqlTwo = "insert into aula (data_aula, comenco_aula, fim_aula, sala) values ('$data_aula','$comenco_aula','$fim_aula','$sala');";
         // $sqlTwo = "insert into aula (data_aula, comenco_aula, fim_aula, sala, cod_turma_aula) values ('$data_aula','$comenco_aula','$fim_aula','$sala','$cod_turma');";
         if (mysqli_query($mysqli, $sql)) {
-            $mysqli->query($sql);
+            // $mysqli->query($sql);
             $mysqli->query($sqlTwo);
         } else {
            echo "Error: " . $sql . "" . mysqli_error($mysqli);

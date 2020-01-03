@@ -1,6 +1,6 @@
 <?php
 
-    require'../Classes/PHPExcel/IOFactory.php';
+    require_once'../Classes/PHPExcel/IOFactory.php';
     require_once'connection.php';
 
     // $nameFile = $_POST['disciplinaFile'];
@@ -13,7 +13,7 @@
 
     $numRows = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
 
-    for ($i=1; $i < $numRows; $i++) { 
+    for ($i=1; $i <= $numRows; $i++) { 
         $nome_aluno = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
         $numero_aluno = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
         $email_aluno = $objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();

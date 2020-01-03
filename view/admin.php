@@ -1,7 +1,7 @@
 <?php
 session_start();
 $sessionUserId = $_SESSION['email'] ?? null;
-$tipoUser = $_SESSION['tipo'];
+$tipoUser = $_SESSION['tipo'] ?? null;
 if (!$sessionUserId  || $tipoUser != 3) {
     echo 'No puedes entrar';
     die;

@@ -7,7 +7,7 @@ body {
   padding: 0;
   font-family: 'Segoe UI Bold';
   font-weight: normal;
-  background: #E9ECEF;
+  background: #e9ecef;
   overflow-x: hidden; }
 
 header {
@@ -136,7 +136,8 @@ select {
   left: 0;
   height: 100vh;
   width: 100px;
-  background: #212529; }
+  background: #212529; 
+}
 
 .container-menu ul {
   height: 70vh;
@@ -458,7 +459,7 @@ select {
 
 .estudantes h3 {
   margin: 0px 10px;
-  padding: 5px 15px; }
+  padding: 5px 0px; }
 
 .estudantes:hover {
   background: #6dc193;
@@ -559,7 +560,8 @@ select {
   width: 100%; }
 
 .aluno {
-  background: rgba(73, 80, 87, 0.3);
+  /* background: rgba(73, 80, 87, 0.3); */
+  margin: 20px 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -577,7 +579,7 @@ select {
 
 .aluno h3 {
   margin: 0px 10px;
-  padding: 5px 15px; }
+  padding: 5px 0px; }
 
 .formAdmin {
   width: 400px; }
@@ -593,4 +595,57 @@ select {
   justify-content: space-around;
   flex-wrap: wrap;
   
+}
+.day{
+  margin-top: 22vh;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 225px;
+  height: 78vh;
+  background: royalblue;
+  z-index: 4;
+  transition: 1s ease;
+  border-radius: 3px;
+  overflow-y: scroll;
+}
+.day form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.day form input{
+  padding: 5px 15px;
+  color:white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.day form input:hover{
+  text-decoration: underline;
+}
+.under{
+  text-decoration: underline;
+}
+.right{
+  right: 0;
+}
+.button-days{
+  padding: 5px 15px;
+  background: royalblue;
+  border: 2px solid royalblue;
+  border-radius: 5px;
+  color: white;
+  transition: .3s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+.button-days:hover{
+  transform: scale(1.05);
+  background: transparent;
+  color: royalblue;
 }

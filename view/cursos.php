@@ -10,11 +10,28 @@ $disciplinas = new Cursos;
 $professor = new Professor;
 session_start();
 $sessionUserId = $_SESSION['email'] ?? null;
-$tipoUser = $_SESSION['tipo'];
+$tipoUser = $_SESSION['tipo'] ?? null;
 if (!$sessionUserId  || $tipoUser == 3) {
     echo 'No puedes entrar';
     die;
 }
+
+switch ($tipoUser) {
+    case 1:
+        require_once '../App/Controllers/selectTurmasAlunos.php';
+        $disciplinas->SetValueDisciplinaTurmas($Array);
+        break;
+
+    case 2:
+        require_once '../App/Controllers/selectTurmasProfessor.php';
+        $disciplinas->SetValueDisciplinaTurmas($Array);
+        break;
+    default:
+        echo'Error al descargar las disciplinas';
+        break;
+        die;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +57,7 @@ if (!$sessionUserId  || $tipoUser == 3) {
                 </select>
             </div>
             <div class="user-style">
-                <p><?php echo $professor->setNameProfessor();?></p>
+                <p><?php echo $_SESSION['nome'];?></p>
                 <div class="container-circle"><img src="../assets/image/default-user-icon-4.jpg" alt="User"></div>
                 <div class="edit-profile"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" class="svg-inline--fa fa-sort-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path></svg></div>
             </div>
@@ -48,7 +65,7 @@ if (!$sessionUserId  || $tipoUser == 3) {
     </header>
     <section class="container-menu">
         <ul>
-            <li><a href="cursos.php">c</a></li>
+            <!-- <li><a href="cursos.php">c</a></li> -->
             <!-- <li><a href="#">t</a></li> -->
             <!-- <li><a href="#">a</a></li> -->
             <li class="logout"><a href="../App/Controllers/logOut.php"><i class="fa">&#xf00d;</i></a></li>

@@ -10,5 +10,5 @@
         if($mysqli->connect_error){
             die('Error at the connection' . $mysqli->connect_error);
         }
-        printf("Information Server: %s\n", $mysqli->server_info);
+        // printf("Information Server: %s\n", $mysqli->server_info);
     

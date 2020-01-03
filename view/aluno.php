@@ -1,18 +1,20 @@
 <?php
-
 require_once '../App/Models/Aluno.php';
-require_once '../App/Models/Average.php';
-use App\Models\{Aluno, Average};
-
-$aluno = new Aluno();
-$average = new Average();
 session_start();
 $sessionUserId = $_SESSION['email'] ?? null;
-$tipoUser = $_SESSION['tipo'];
+$tipoUser = $_SESSION['tipo'] ?? null;
 if (!$sessionUserId  || $tipoUser == 3) {
     echo 'No puedes entrar';
     die;
 }
+    $numeroAluno = $_GET['varA'];
+    $nomeDisciplina = $_SESSION['nomeDisciplina'];
+    $nomeTurma = $_SESSION['nomeTurma'];
+    $dataDia = $_SESSION['data'];
+    require_once '../App/Controllers/selectRegistroAluno.php';
+    use App\Models\Aluno;
+    $aluno = new Aluno();
+    $aluno->setDataAluno($Array);
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +41,7 @@ if (!$sessionUserId  || $tipoUser == 3) {
                 </select>
             </div>
             <div class="user-style">
-                <p>Júlia Justino</p>
+                <p><?php echo $_SESSION['nome']?></p>
                 <div class="container-circle"><img src="../assets/image/default-user-icon-4.jpg" alt="User"></div>
                 <div class="edit-profile"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" class="svg-inline--fa fa-sort-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path></svg></div>
             </div>
@@ -47,7 +49,7 @@ if (!$sessionUserId  || $tipoUser == 3) {
     </header>
     <section class="container-menu">
         <ul>
-            <li><a href="cursos.php">c</a></li>
+            <li><a href="cursos.php">d</a></li>
             <li><a href="turma.php">t</a></li>
             <!-- <li><a href="aluno.html">a</a></li> -->
             <li class="logout"><a href="../App/Controllers/logOut.php"><i class="fa">&#xf00d;</i></a></li>
@@ -55,32 +57,15 @@ if (!$sessionUserId  || $tipoUser == 3) {
     </section>
     <section class="container-principal">
            <div class="container-content-principal">
-                <h1><?php echo $aluno->setNameAluno() . ":"; ?> 
-                    <span>
-                        <form action="/action_page.php">
-                            <input type="date" name="bday" id="calendar" onchange="changeDate()">
-                        </form>
-                    </span>
-                </h1>
+                <p style=" color: darkblue;" id="disciplina"><?php echo $nomeDisciplina;?>\<?php echo $nomeTurma;?></p>
+                <h1><?php echo  $aluno->setNameAluno(); ?></h1>
                 <div class="section-container">
                     <div class="container-aluno">
                         <?php $aluno->printAluno();?>
                     </div>
                 </div>
            </div>
-           <div class="container-average">
-                <h1>Media de assistencias:</h1>
-                <?php $average->printAverage(); ?>
-           </div>
     </section>
-    <script>
-    const calendar = document.getElementById('calendar');
-    function changeDate() {
-        var x = calendar.value;
-        console.log(x);
-    }
-    
-    </script>
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
