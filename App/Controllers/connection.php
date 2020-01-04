@@ -2,7 +2,7 @@
 
     $host = '127.0.0.1:3306';
     $root = 'root';
-    $password = '';
+    $password = 'Julio2587946';
     $bd = 'SGA';
 
     $mysqli = new mysqli($host, $root, $password, $bd);
