@@ -3,7 +3,7 @@ session_start();
 $sessionUserId = $_SESSION['email'] ?? null;
 $tipoUser = $_SESSION['tipo'] ?? null;
 if (!$sessionUserId  || $tipoUser != 3) {
-    echo 'No puedes entrar';
+    header("location:login.php");
     die;
 }
 ?>
@@ -32,8 +32,8 @@ if (!$sessionUserId  || $tipoUser != 3) {
             </div>
             <div class="user-style">
                 <p>Nome Administrador</p>
-                <div class="container-circle"><img src="../assets/image/default-user-icon-4.jpg" alt="User"></div>
-                <div class="edit-profile"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" class="svg-inline--fa fa-sort-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path></svg></div>
+                <!-- <div class="container-circle"><img src="../assets/image/default-user-icon-4.jpg" alt="User"></div> -->
+                <!-- <div class="edit-profile"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" class="svg-inline--fa fa-sort-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path></svg></div> -->
             </div>
         </nav>
     </header>
@@ -78,35 +78,35 @@ if (!$sessionUserId  || $tipoUser != 3) {
                         <form action="../App/Controllers/addDisciplinas.php" method="post">
                             <h1>Inserir Disciplinas</h1>
                             <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
-                            <input type="submit" value="Sumeter dados disciplina">
+                            <input type="submit" value="Submeter dados disciplina">
                         </form>
                         <form action="../App/Controllers/addAluno.php" method="post">
                             <h1>Inserir dados Aluno</h1>
                             <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
-                            <input type="submit" value="Sumeter dados Aluno">
+                            <input type="submit" value="Submeter dados Aluno">
                         </form>
                         <form action="../App/Controllers/addProfessor.php" method="post">
                             <h1>Inserir dados Professor</h1>
                             <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
-                            <input type="submit" value="Sumeter dados Professor">
+                            <input type="submit" value="Submeter dados Professor">
                         </form>
                         <form action="../App/Controllers/addHorarios.php" method="post">
                             <h1>Inserir dados Horarios</h1>
                             <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
-                            <input type="submit" value="Sumeter dados Professor">
+                            <input type="submit" value="Submeter dados Professor">
                         </form>
                         <form action="../App/Controllers/addTurmaAlunos.php" method="post">
                             <h1>Inserir dados TurmasAlunos</h1>
                             <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
-                            <input type="submit" value="Sumeter dados Professor">
+                            <input type="submit" value="Submeter dados Professor">
                         </form>
                         <form action="../App/Controllers/addAdmin.php" method="post">
                             <h1>Inserir dados Admin</h1>
                             <!-- <input type="file" name="disciplinaFile" id="disciplinaFile" multiple> -->
-                            <input type="submit" value="Sumeter dados admin">
+                            <input type="submit" value="Submeter dados admin">
                         </form>
                     <!-- </div> -->
-                <!-- <div class="formAdmin" id="inserirNumeroDisTurma">
+                <div class="formAdmin" id="inserirNumeroDisTurma">
                         <h1>Inserir Professor</h1>
                         <form action="">
                             <label for="NomeProfessor">Nome Professor (Completo)</label>
@@ -116,14 +116,12 @@ if (!$sessionUserId  || $tipoUser != 3) {
                             <label for="">Email Professor</label>
                             <input type="email" name="EmailProfessor" placeholder="Email Professor">
                             <label for="">Password do Professor</label>
-                            <input type="password" name="PasswordProfessor" placeholder="Password do Professor"> -->
-                            <!-- <label for="">Tipo Utilizador</label> -->
-                            <!-- <select name="TipoUtilizador" id="TipoUtilizadorProfessor" aria-placeholder="Tipo Utilizador">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select> -->
-                            <!-- <h2>Disciplinas e turmas  (À Ensinar)</h2>
+                            <input type="password" name="PasswordProfessor" placeholder="Password do Professor">
+                        </form>
+                </div>
+                <div>
+                    <h2>Disciplinas e turmas  (À Ensinar)</h2>
+                    <form action="">
                             <label for="">Número de disciplinas</label>
                             <div class="containerNumeroDisciplinas" id="containerNumeroDisciplinasProfessor">
                             </div>
@@ -131,9 +129,8 @@ if (!$sessionUserId  || $tipoUser != 3) {
                             <input type="button" value="OK!" id="buttonDisciplinasProfessor">
                             <label for="">Ano a cursar</label>
                             <input type="number" name="anoAcursarAluno" id="anoAcursarProfessor">
-                            
-                        </form>
-                </div> -->
+                    </form>
+                </div>
 
         </div>
                 

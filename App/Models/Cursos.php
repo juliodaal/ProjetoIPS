@@ -15,7 +15,7 @@ class Cursos {
         for ($i=0; $i < count($this->disciplinaTurmas); $i++) { 
             echo "<div class='container-content-principal'>";
             $y = $this->disciplinaTurmas[$i][0];
-            echo "<h1 id='title'>" . $this->disciplinaTurmas[$i][0] . ":</h1>";
+            echo "<h1 class='title'>" . $this->disciplinaTurmas[$i][0] . ":</h1>";
             echo "<div class='section-container'>";
             for ($j=0; $j < count($this->disciplinaTurmas[$i]) - 1; $j++) { 
                 $x = $this->disciplinaTurmas[$i][$j + 1];

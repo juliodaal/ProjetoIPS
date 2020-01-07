@@ -2,7 +2,18 @@
 
 require_once'connection.php';
 
-$sql = "select * from pertence join aluno on numero_aluno_pertence=numero_aluno where cod_turma_pertence = '$nameTurma';";
+switch ($tipoUser) {
+    case 1:
+        $sql = "select nome_aluno,numero_aluno from pertence join aluno on numero_aluno_pertence=numero_aluno where cod_turma_pertence = '$nameTurma' and email_aluno = '$sessionUserId';";
+        break;
+    case 2:
+        $sql = "select nome_aluno,numero_aluno from pertence join aluno on numero_aluno_pertence=numero_aluno where cod_turma_pertence = '$nameTurma';";
+        break;
+    
+    default:
+        var_dump('Erro na pesquisa na base de dados');
+        break;
+}
 
     $result = mysqli_query($mysqli, $sql);
     $rows = mysqli_num_rows($result);
@@ -17,9 +28,9 @@ $sql = "select * from pertence join aluno on numero_aluno_pertence=numero_aluno 
             
             $numAluno = $rowCOD['numero_aluno'];
             
-            $hora_entrada = $ObjHE['minHora'] ?? 0;
+            $hora_entrada = 0;
             
-            $hora_saida =  $ObjHS['maxHora'] ?? 0;
+            $hora_saida =  0;
 
             array_push($Array, [$name,$hora_entrada,$hora_saida,$numAluno]); 
         }
