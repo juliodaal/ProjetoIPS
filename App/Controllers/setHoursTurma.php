@@ -1,6 +1,13 @@
 <?php 
 session_start();
 require_once'connection.php';
+$sessionUserId = $_SESSION['email'];
+$sqlid="select id from utilizador where email ='$sessionUserId'";
+
+
+$resultSqlid = mysqli_query($mysqli, $sqlid);
+$resultSqlidCOD = $resultSqlid->fetch_assoc();
+$variavelID = $resultSqlidCOD['id'];
 
 $dateTurmaAula = $_GET['varb'];
 $tipoUser = $_SESSION['tipo'];
@@ -23,10 +30,12 @@ for ($p= $count + 1; $p < strlen($dateTurmaAula); $p++) {
 $_SESSION['data'] = $dateTurmaDay;
 switch ($tipoUser) {
     case 1:
-        $sql = "select nome_aluno,numero_aluno from pertence join aluno on numero_aluno_pertence=numero_aluno where cod_turma_pertence = '$nameTurmaDay' and email_aluno = '$sessionUserId';";
+        $sql = "select nome, cod_aluno from pertence join aluno on cod_aluno_pertence = cod_aluno join utilizador on id_aluno=id where nome_turma_pertence = '$nameTurmaDay' and id_aluno = '$variavelID';";
+        // $sql = "select nome_aluno,numero_aluno from pertence join aluno on numero_aluno_pertence=numero_aluno where cod_turma_pertence = '$nameTurmaDay' and email_aluno = '$sessionUserId';";
         break;
     case 2:
-        $sql = "select nome_aluno,numero_aluno from pertence join aluno on numero_aluno_pertence=numero_aluno where cod_turma_pertence = '$nameTurmaDay';";
+        $sql = "select nome, cod_aluno from pertence join aluno on cod_aluno_pertence = cod_aluno join utilizador on id_aluno=id where nome_turma_pertence = '$nameTurmaDay';";
+        // $sql = "select nome_aluno,numero_aluno from pertence join aluno on numero_aluno_pertence=numero_aluno where cod_turma_pertence = '$nameTurmaDay';";
         break;
     
     default:
@@ -43,16 +52,18 @@ switch ($tipoUser) {
 
         while($rowCOD = $result->fetch_assoc()) {
 
-            $name = $rowCOD['nome_aluno'];
+            $name = $rowCOD['nome'];
             
-            $numAluno = $rowCOD['numero_aluno'];
-            
-            $sqlentrada = "select numero_aluno_pertence,fim_aula,entrada,min(hora_entrada) as 'minHora' from pertence join aluno on numero_aluno_pertence=numero_aluno join assistem on numero_aluno=numero_aluno_assistem join aula on cod_aula_assistem=sala and date_assitem=data_aula where cod_turma_pertence = '$nameTurmaDay' and numero_aluno_assistem = '$numAluno' and entrada = 1 and date_assitem = '$dateTurmaDay' and hora_entrada>=comenco_aula and hora_entrada<=fim_aula;";
+            $numAluno = $rowCOD['cod_aluno'];
+            $sqlentrada = "select cod_aluno_pertence,fim_aula,entrada,min(hora_entrada) as 'minHora' from pertence join aluno on cod_aluno_pertence = cod_aluno join assistem on cod_aluno = cod_aluno_assistem join aula on data_assistem = data_aula where nome_turma_pertence = '$nameTurmaDay' and cod_aluno_assistem = '$numAluno' and entrada = 1 and data_assistem = '$dateTurmaDay' and hora_entrada >= comeco_aula and hora_saida <= fim_aula; ";
+            // $sqlentrada = "select numero_aluno_pertence,fim_aula,entrada,min(hora_entrada) as 'minHora' from pertence join aluno on numero_aluno_pertence=numero_aluno join assistem on numero_aluno=numero_aluno_assistem join aula on cod_aula_assistem=sala and date_assitem=data_aula where cod_turma_pertence = '$nameTurmaDay' and numero_aluno_assistem = '$numAluno' and entrada = 1 and date_assitem = '$dateTurmaDay' and hora_entrada>=comenco_aula and hora_entrada<=fim_aula;";
             $EnvSqlentrada = mysqli_query($mysqli, $sqlentrada);
             $ObjHE = $EnvSqlentrada->fetch_assoc();
             $hora_entrada = $ObjHE['minHora'] ?? 0;
+            // var_dump($ObjHE['minHora']);
             
-            $sqlsaida = "select numero_aluno_pertence,entrada,max(hora_saida) as 'maxHora' from pertence join aluno on numero_aluno_pertence=numero_aluno join assistem on numero_aluno=numero_aluno_assistem join aula on cod_aula_assistem=sala and date_assitem=data_aula where cod_turma_pertence = '$nameTurmaDay' and numero_aluno_assistem = '$numAluno' and entrada = 0 and date_assitem = '$dateTurmaDay' and hora_saida>=comenco_aula;";
+            $sqlsaida = "select cod_aluno_pertence,entrada,max(hora_saida) as 'maxHora' from pertence join aluno on cod_aluno_pertence = cod_aluno join assistem on cod_aluno = cod_aluno_assistem join aula on data_assistem = data_aula where nome_turma_pertence = '$nameTurmaDay'  and cod_aluno_assistem = '$numAluno' and entrada = 0 and data_assistem = '$dateTurmaDay';";
+            // $sqlsaida = "select numero_aluno_pertence,entrada,max(hora_saida) as 'maxHora' from pertence join aluno on numero_aluno_pertence=numero_aluno join assistem on numero_aluno=numero_aluno_assistem join aula on cod_aula_assistem=sala and date_assitem=data_aula where cod_turma_pertence = '$nameTurmaDay' and numero_aluno_assistem = '$numAluno' and entrada = 0 and date_assitem = '$dateTurmaDay' and hora_saida>=comenco_aula;";
             $EnvSqlsaida = mysqli_query($mysqli, $sqlsaida);
             $ObjHS = $EnvSqlsaida->fetch_assoc();
             $hora_saida =  $ObjHS['maxHora'] ?? 0;

@@ -11,7 +11,8 @@ $day = $_GET['day'] ?? 0;
 $intNumProfessor =  (int)$numProfessor;
 $intNumeroEstudantes = (int)$numeroEstudantes;
 
-$sqlInserE = "insert into dataE (nome_turma, cantidade_estudantes, media_estudantes, nome_disciplina, numero_professor, data_turma) values ('$titleTurma', $intNumeroEstudantes,'$media','$materia' ,$intNumProfessor,'$day');";
+$sqlInserE = "insert into dataE (nome_turma, quantidade_estudantes, media_estudantes, nome_disciplina, numero_professor, data_turma) values ('$titleTurma', $intNumeroEstudantes,'$media','$materia' ,$intNumProfessor,'$day');";
+// $sqlInserE = "insert into dataE (nome_turma, cantidade_estudantes, media_estudantes, nome_disciplina, numero_professor, data_turma) values ('$titleTurma', $intNumeroEstudantes,'$media','$materia' ,$intNumProfessor,'$day');";
 
 
 if (mysqli_query($mysqli, $sqlInserE)) {

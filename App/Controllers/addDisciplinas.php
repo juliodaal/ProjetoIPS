@@ -23,3 +23,4 @@
            echo "Error: " . $sql . "" . mysqli_error($mysqli);
         }
     }
+    header("location:../../view/admin.php");

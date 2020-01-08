@@ -2,7 +2,14 @@
 
 require_once'connection.php';
 
-$sql = "select cod_turma from professor join turmadisciplina on cod_professor=cod_professor_turmaDisciplina where email_professor = '$sessionUserId' group by cod_turma;";
+$sqlid="select id from utilizador where email ='$sessionUserId'";
+
+$resultSqlid = mysqli_query($mysqli, $sqlid);
+$resultSqlidCOD = $resultSqlid->fetch_assoc();
+$variavelID = $resultSqlidCOD['id'];
+
+$sql = "select nome_turma from professor join turmadisciplina on cod_professor=cod_professor_td where id_professor= '$variavelID' group by nome_turma;";
+// $sql = "select cod_turma from professor join turmadisciplina on cod_professor=cod_professor_turmaDisciplina where email_professor = '$sessionUserId' group by cod_turma;";
     
     $result = mysqli_query($mysqli, $sql);
     $rows = mysqli_num_rows($result);
@@ -18,8 +25,9 @@ $sql = "select cod_turma from professor join turmadisciplina on cod_professor=co
 
         while($rowCOD = $result->fetch_assoc()) {
             $boo = false;      
-            $x = $rowCOD['cod_turma'];
-            $sqlTwo = "select nome_disciplina from professor join turmadisciplina on cod_professor=cod_professor_turmaDisciplina join disciplina on cod_disciplina_turmaDisciplina= cod_disciplina where email_professor = '$sessionUserId' and cod_turma = '$x' group by cod_disciplina_turmaDisciplina;";
+            $x = $rowCOD['nome_turma'];
+            $sqlTwo = "select nome_disciplina from professor join turmadisciplina on cod_professor=cod_professor_td join disciplina on cod_disciplina_td= cod_disciplina where id_professor = '$variavelID' and nome_turma = '$x' group by cod_disciplina_td;";
+            // $sqlTwo = "select nome_disciplina from professor join turmadisciplina on cod_professor=cod_professor_turmaDisciplina join disciplina on cod_disciplina_turmaDisciplina= cod_disciplina where email_professor = '$sessionUserId' and cod_turma = '$x' group by cod_disciplina_turmaDisciplina;";
             
             $resultDIS = mysqli_query($mysqli, $sqlTwo);
             $Numrows = mysqli_num_rows($resultDIS);

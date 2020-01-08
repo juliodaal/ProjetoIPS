@@ -5,8 +5,11 @@ require_once'connection.php';
 $user = $_POST['email'];
 $password = $_POST['password']; 
 
-$sqlConsultEmail = "select email_utilizador from utilizador where email_utilizador = '$user'";
-$sqlConsultPwd = "select * from utilizador where email_utilizador = '$user'";
+$sqlConsultEmail = "select email from utilizador where email = '$user'";
+// $sqlConsultEmail = "select email_utilizador from utilizador where email_utilizador = '$user'";
+$sqlConsultPwd = "select * from utilizador where email = '$user'";
+// $sqlConsultPwd = "select * from utilizador where email_utilizador = '$user'";
+
 
 
 
@@ -16,13 +19,13 @@ if (mysqli_query($mysqli, $sqlConsultEmail)) {
     if ($rows>0) {
         $resultPwd = mysqli_query($mysqli, $sqlConsultPwd);
         $pass= mysqli_fetch_assoc($resultPwd);
-        if (password_verify($password, $pass['pwd_utilizador'])) {
+        if (password_verify($password, $pass['pwd'])) {
                 session_start();
                 $_SESSION['nome'] = $pass['nome'];
-                $_SESSION['email'] = $pass['email_utilizador'];
-                $_SESSION['pwd'] = $pass['pwd_utilizador'];
-                $_SESSION['tipo'] = $pass['tipo_utilizador'];
-                $tipo = $pass['tipo_utilizador'];
+                $_SESSION['email'] = $pass['email'];
+                $_SESSION['pwd'] = $pass['pwd'];
+                $_SESSION['tipo'] = $pass['tipo_u'];
+                $tipo = $pass['tipo_u'];
                 switch ($tipo) {
                     case 1:
                         header("location:../../view/cursos.php");
@@ -45,7 +48,7 @@ if (mysqli_query($mysqli, $sqlConsultEmail)) {
         header("location:../../view/loginError.php");
     }
 } else {
-   echo "Error: " . $sqlConsult . "" . mysqli_error($mysqli);
+   echo "Error: " . $sqlConsultEmail . "" . mysqli_error($mysqli);
 }
 mysqli_free_result($result);
 mysqli_close($mysqli);

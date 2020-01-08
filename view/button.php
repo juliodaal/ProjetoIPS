@@ -9,7 +9,7 @@
     <title>Button | SGA</title>
 </head>
 <body>
-    <form action="../App/Controllers/addAssistem.php" method="post">
+    <form action="../App/Controllers/addAssistem.php?variab=1" method="post">
         <h1>Test Button</h1>
             <input type="submit" value="Sumeter dados Assistem">
     </form>

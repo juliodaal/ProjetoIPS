@@ -54,6 +54,18 @@ $_SESSION['nomeTurma'] = $turma->getTitleTurma();
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <title>Turma | SGA</title>
+    <style>
+    .overclick{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      background: transparent;
+      display: none;
+  }
+  </style>
 </head>
 <body>
 <div class="overclick" id="overclick"></div>
